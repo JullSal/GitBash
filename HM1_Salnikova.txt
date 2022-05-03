@@ -1,0 +1,85 @@
+1) Посмотреть где я -> pwd 
+2) Создать папку -> mkdir homework1
+3) Зайти в папку -> cd homework1
+4) Создать 3 папки -> mkdir test1 test2 test3
+5) Зайти в любоую папку -> cd test1
+6) Создать 5 файлов (3 txt, 2 json) -> touch qa1.txt qa2.txt qa3.txt qa_free1.json qa_free2.json
+7) Создать 3 папки -> mkdir qq1 qq2 qq3
+8. Вывести список содержимого папки -> ls -l
+9) + Открыть любой txt файл -> cat qa1.txt 
+10) + написать туда что-нибудь, любой текст. -> vim qa1.txt ->
+						i ->
+                                                111
+ 						222
+						333
+						
+11) + сохранить и выйти. -> esc->
+			    :wq
+
+ДОП.ВАРИАНТ решения пунктов 9+10+11
+cat >> qa1.txt
+111
+222
+333
+ctrl+c
+
+12) Выйти из папки на уровень выше -> cd ../
+—
+13) переместить любые 2 файла, которые вы создали, в любую другую папку.
+mv test1/qa1.txt test2 | mv test1/qa2.txt test2
+
+14) скопировать любые 2 файла, которые вы создали, в любую другую папку.
+cp test2/qa1.txt test3/qa1.txt | cp test1/qa_free1.json test2/qa_test1.json
+
+15) Найти файл по имени
+(preparation-зайти в папку, где лежит нужный текстовый файл через cd name_directory) 
+ find . -name "qa1.txt"
+
+16) просмотреть содержимое в реальном времени (команда grep) изучите как она работает.
+(preparation-зайти в папку, где лежит нужный текстовый файл через cd name_directory) 
+grep q qa1.txt 
+
+17) вывести несколько первых строк из текстового файла
+(preparation-зайти в папку, где лежит нужный текстовый файл через cd name_directory) 
+head -3 qa1.txt
+
+18) вывести несколько последних строк из текстового файла
+(preparation-зайти в папку, где лежит нужный текстовый файл через cd name_directory)
+tail -2 qa1.txt 
+
+19) просмотреть содержимое длинного файла (команда less) изучите как она работает.
+(preparation-зайти в папку, где лежит нужный текстовый файл через cd name_directory)
+less qa1.txt
+для поиска по тексту /искомые данные
+для выхода из режима q
+
+20) вывести дату и время
+date 
+в любой папке работает
+
+========================================================================================
+
+Задание *
+1) Отправить http запрос на сервер.
+http://162.55.220.72:5005/terminal-hw-request
+
+curl http://162.55.220.72:5005/terminal-hw-request
+curl "http://162.55.220.72:5005/get_method?name=Julia&age=27"
+
+2) Написать скрипт который выполнит автоматически пункты 3, 4, 5, 6, 7, 8, 13
+
+cat > script1.sh
+#!/bin/bash
+cd homework1
+mkdir test1 test2 test3
+cd test1
+touch qa1.txt qa2.txt qa3.txt qa_free1.json qa_free2.json
+mkdir qq1 qq2 qq3
+ls -la
+cd ../
+mv test1/qa1.txt test2
+mv test1/qa2.txt test2
+echo "Done! You are awsome!"
+^D
+
+./script1.sh
